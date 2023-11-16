@@ -56,7 +56,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	//消費期限のタイマー
 	bool Timer[12] = { false,false,false,false,false,false,false,false,false,false,false,false };
-	int time[12] = { 100,100,100,100,100,100,100,100,100,100,100,100 };
+	int time = 1440;
 	int width = 0;
 
 	//自機の当たり判定宣言
@@ -138,7 +138,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	int kuria = Novice::LoadTexture("./clear.png");
 
 	bool take = false;
-	bool take2 = false;
+	
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -196,7 +196,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				if (flag[i] == true) {
 					if (LEFT[i] <= right && RIGHT[i] >= left && TOP[i] <= bottom && BOTTOM[i] >= top && flag[i] == true) {
 						flag[i] = false;
-						take2 = true;
+						take = true;
 
 						scoreflag = true;
 						if (scoreflag == true) {
@@ -222,8 +222,33 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							scoreflag = false;
 						}
 					}
+
+
+
+
+
+
 				}
 			}
+
+
+
+
+			if (take == true) {
+				take = false;
+				width -= 50;
+				time += 120;
+			}
+
+			if (time > 1440) {
+				time = 1440;
+			}
+
+			if (width <= 0) {
+				width = 0;
+			}
+
+
 
 			//スクロール処理(右)
 			if (pl.pos.x > 640 && (keys[DIK_D])) {
@@ -302,8 +327,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 
 			if (Timer[0] == false) {
-				time[0] -= 1;
-				if (0 > time[0]) {
+				time -= 1;
+				if (1320 > time) {
 					width += 50;
 					Timer[0] = true;
 				}
@@ -311,8 +336,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[0] == true) {
 				if (Timer[1] == false) {
-					time[1] -= 1;
-					if (0 > time[1]) {
+					time -= 1;
+					if (1200 > time) {
 						width += 50;
 						Timer[1] = true;
 					}
@@ -321,8 +346,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[1] == true) {
 				if (Timer[2] == false) {
-					time[2] -= 1;
-					if (0 > time[2]) {
+					time -= 1;
+					if (1080 > time) {
 						width += 50;
 						Timer[2] = true;
 					}
@@ -331,8 +356,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[2] == true) {
 				if (Timer[3] == false) {
-					time[3] -= 1;
-					if (0 > time[3]) {
+					time -= 1;
+					if (960 > time) {
 						width += 50;
 						Timer[3] = true;
 					}
@@ -341,8 +366,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[3] == true) {
 				if (Timer[4] == false) {
-					time[4] -= 1;
-					if (0 > time[4]) {
+					time -= 1;
+					if (840 > time) {
 						width += 50;
 						Timer[4] = true;
 					}
@@ -351,8 +376,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[4] == true) {
 				if (Timer[5] == false) {
-					time[5] -= 1;
-					if (0 > time[5]) {
+					time -= 1;
+					if (720 > time) {
 						width += 50;
 						Timer[5] = true;
 					}
@@ -361,8 +386,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[5] == true) {
 				if (Timer[6] == false) {
-					time[6] -= 1;
-					if (0 > time[6]) {
+					time -= 1;
+					if (600 > time) {
 						width += 50;
 						Timer[6] = true;
 					}
@@ -371,8 +396,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[6] == true) {
 				if (Timer[7] == false) {
-					time[7] -= 1;
-					if (0 > time[7]) {
+					time -= 1;
+					if (480 > time) {
 						width += 50;
 						Timer[7] = true;
 					}
@@ -381,8 +406,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[7] == true) {
 				if (Timer[8] == false) {
-					time[8] -= 1;
-					if (0 > time[8]) {
+					time -= 1;
+					if (360 > time) {
 						width += 50;
 						Timer[8] = true;
 					}
@@ -391,8 +416,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[8] == true) {
 				if (Timer[9] == false) {
-					time[9] -= 1;
-					if (0 > time[9]) {
+					time -= 1;
+					if (240 > time) {
 						width += 50;
 						Timer[9] = true;
 					}
@@ -401,8 +426,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[9] == true) {
 				if (Timer[10] == false) {
-					time[10] -= 1;
-					if (0 > time[10]) {
+					time -= 1;
+					if (120 > time) {
 						width += 50;
 						Timer[10] = true;
 					}
@@ -411,18 +436,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			if (Timer[10] == true) {
 				if (Timer[11] == false) {
-					time[11] -= 1;
-					if (0 > time[11]) {
+					time -= 1;
+					if (0 > time) {
 						width += 50;
+						game = GAMEOVER;
 						Timer[11] = true;
 
 					}
 				}
 			}
 
-			if (Timer[11] == true) {
-				game = GAMEOVER;
-			}
+			
 
 			//スコア表示
 
@@ -514,21 +538,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				for (int i = 0; i < 10; i++) {
 					Timer[i] = { false };
 				}
-				for (int i = 0; i < 10; i++) {
-					time[i] = { 100 };
-				}
+				time = 1440;
 
 
-				if (take == true) {
-					take = false;
-					width -= 50;
-				}
 
-				if (take2 == true) {
-					take2 = false;
-					width -= 100;
-				}
-
+				
 
 			}
 			break;
@@ -632,11 +646,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			//ゲージ
 			Novice::DrawBox(600, 30, 600, 50, 0.0f, BLACK, kFillModeSolid);
 
-			for (int i = 0; i < 11; i++) {
-				if (Timer[i] == true) {
-					Novice::DrawBox(600, 30, width, 50, 0.0f, RED, kFillModeSolid);
-				}
-			}
+			Novice::ScreenPrintf(0, 400, "time:%d", time);
+
+			Novice::DrawBox(600, 30, width, 50, 0.0f, RED, kFillModeSolid);
 
 
 			break;
@@ -665,6 +677,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			break;
 		}
 	}
+
+	
 
 	// ライブラリの終了
 	Novice::Finalize();
